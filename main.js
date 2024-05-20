@@ -1,6 +1,13 @@
+const root = document.documentElement;
 const container = document.querySelector('#container');
-const button = document.querySelector('#change-btn');
+const changeBtn = document.querySelector('#change-btn');
+const themeBtn = document.querySelector('#theme-btns');
 let divs = document.querySelectorAll('#container div');
+
+function toggleTheme() {
+  root.classList.toggle('dark');
+  root.classList.toggle('light');
+}
 
 function getRandomNumberForRGB() {
   return Math.floor(Math.random() * 256);
@@ -72,4 +79,5 @@ function createSquares(numberOfSquares) {
 
 createSquares(16);
 
-button.addEventListener('click', changeNumberOfSquares);
+changeBtn.addEventListener('click', changeNumberOfSquares);
+themeBtn.addEventListener('click', toggleTheme)
