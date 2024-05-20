@@ -1,5 +1,6 @@
 const container = document.querySelector('#container');
-let rows = [];
+const button = document.querySelector('#change-btn');
+let divs = document.querySelectorAll('#container div');
 
 function getRandomNumberForRGB() {
   return Math.floor(Math.random() * 256);
@@ -21,25 +22,54 @@ function changeOpacity(event) {
   }
 }
 
-for(let i=0; i < 16; i++) {
-  let div = document.createElement('div');
-  div.classList.add('column');
-  container.appendChild(div);
-  rows.push(div);
+function changeNumberOfSquares() {
+  let numberOfSquares = Number(prompt('How many squares do you want layout to have (default is: 16x16)'));
+  while (!isNumberValid(numberOfSquares)) {
+    numberOfSquares = Number(prompt('You are supposed to input only numbers between 1 and 100'));
+  }
+
+  deleteAllSquares();
+  createSquares(numberOfSquares);
 }
 
-rows.forEach(row => {
-  for(let i=0; i < 16; i++) {
-    let div = document.createElement('div');
-    div.classList.add('row');
-    row.appendChild(div);
+function isNumberValid(number) {
+  if (number !== Number(number) || number < 1 || number > 100) {
+    return false;
   }
-})
+  return true;
+}
 
-const divs = document.querySelectorAll('#container div');
+function deleteAllSquares() {
+  container.innerHTML = "";
+}
 
-divs.forEach(div => {
-  div.addEventListener('mouseover', changeBackgroundOnHover);
-  div.style.opacity = "1";
-  div.addEventListener('mouseover', changeOpacity);
-})
+function createSquares(numberOfSquares) {
+  let rows = [];
+
+  for(let i=0; i < numberOfSquares; i++) {
+    let div = document.createElement('div');
+    div.classList.add('column');
+    container.appendChild(div);
+    rows.push(div);
+  }
+
+  rows.forEach(row => {
+    for(let i=0; i < numberOfSquares; i++) {
+      let div = document.createElement('div');
+      div.classList.add('row');
+      row.appendChild(div);
+    }
+  });
+
+  divs = document.querySelectorAll('#container div');
+
+  divs.forEach(div => {
+    div.addEventListener('mouseover', changeBackgroundOnHover);
+    div.style.opacity = "1";
+    div.addEventListener('mouseover', changeOpacity);
+  });
+}
+
+createSquares(16);
+
+button.addEventListener('click', changeNumberOfSquares);
