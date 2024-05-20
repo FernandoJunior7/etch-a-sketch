@@ -5,6 +5,16 @@ function getRandomNumberForRGB() {
   return Math.floor(Math.random() * 256);
 }
 
+function changeBackgroundOnHover(event) {
+  let red = getRandomNumberForRGB();
+  let green = getRandomNumberForRGB();
+  let blue = getRandomNumberForRGB();
+
+  event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+  event.currentTarget.removeEventListener('mouseover', changeBackgroundOnHover);
+}
+
 for(let i=0; i < 16; i++) {
   let div = document.createElement('div');
   div.classList.add('column');
@@ -23,11 +33,5 @@ rows.forEach(row => {
 const divs = document.querySelectorAll('#container div');
 
 divs.forEach(div => {
-  div.addEventListener('mouseover', (event) => {
-    let red = getRandomNumberForRGB();
-    let green = getRandomNumberForRGB();
-    let blue = getRandomNumberForRGB();
-
-    event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-  })
+  div.addEventListener('mouseover', changeBackgroundOnHover);
 })
