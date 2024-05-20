@@ -15,6 +15,12 @@ function changeBackgroundOnHover(event) {
   event.currentTarget.removeEventListener('mouseover', changeBackgroundOnHover);
 }
 
+function changeOpacity(event) {
+  if (event.target.style.opacity > 0.0) {
+    event.target.style.opacity = `${event.target.style.opacity - 0.1}`;
+  }
+}
+
 for(let i=0; i < 16; i++) {
   let div = document.createElement('div');
   div.classList.add('column');
@@ -34,4 +40,6 @@ const divs = document.querySelectorAll('#container div');
 
 divs.forEach(div => {
   div.addEventListener('mouseover', changeBackgroundOnHover);
+  div.style.opacity = "1";
+  div.addEventListener('mouseover', changeOpacity);
 })

@@ -44,4 +44,6 @@ body {
 
 .row {
   flex: 1;
+
+  opacity: 1;
 }
