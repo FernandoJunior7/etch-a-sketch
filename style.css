@@ -16,10 +16,37 @@ body {
   min-height: 100vh;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 
   padding: 2rem;
+}
+
+button {
+  border: none;
+  border-radius: .6rem;
+
+  text-transform: uppercase;
+  font-weight: 700;
+
+  padding: 1.2rem 2.4rem;
+
+  background-color: #1b68e3;
+  color: #e7e7e7;
+
+  transition: .5s;
+}
+
+button:hover {
+  cursor: pointer;
+
+  transform: scale(1.2);
+
+  background-color: #e7e7e7;
+  color: #1b68e3;
+
+  box-shadow: 4px 4px 4px #1b68e3;
 }
 
 #container {
