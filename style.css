@@ -29,6 +29,10 @@ body {
   margin: 0 auto;
 }
 
+#container div {
+  transition: .5s;
+}
+
 .column {
   flex: 1;
   aspect-ratio: 1/1;

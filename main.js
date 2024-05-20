@@ -16,3 +16,11 @@ rows.forEach(row => {
   }
 })
 
+const divs = document.querySelectorAll('#container div');
+
+divs.forEach(div => {
+  div.addEventListener('mouseover', (event) => {
+    event.target.style.backgroundColor = "red";
+  })
+})
+
